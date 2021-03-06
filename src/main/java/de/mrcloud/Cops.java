@@ -126,7 +126,7 @@ public class Cops {
         }
     }
 
-    public Map.Entry<String, String> removeMedic(String id) {
+    public Map.Entry<String, String> removeMedic(String id, boolean lowerDutyNumbers) {
         Map.Entry<String, String> entryFound = null;
         for (Map.Entry<String, String> entry : cops.entrySet()) {
             if (entry.getKey().equalsIgnoreCase(id) || entry.getValue().equalsIgnoreCase(id)) {
@@ -139,7 +139,19 @@ public class Cops {
 
         id = entryFound.getKey();
         String dutyNumber = cops.get(id);
+
+        int dutyNumberInt = Integer.parseInt(cops.get(id).split(" ")[1]);
         cops.remove(id);
+
+        for (String ids : cops.keySet()) {
+            int personNumber = Integer.parseInt(cops.get(ids).split(" ")[1]);
+            if (dutyNumberInt < personNumber) {
+                personNumber--;
+                editMedic(ids, "ol " + personNumber);
+            }
+        }
+
+
         if (Utils.hasKey(cops, id))
             cops.put("812773728660357151" + 1, dutyNumber);
 

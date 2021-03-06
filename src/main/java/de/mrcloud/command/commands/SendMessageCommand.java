@@ -12,6 +12,8 @@ import net.dv8tion.jda.api.events.message.guild.GuildMessageReceivedEvent;
 import java.awt.*;
 import java.time.chrono.IsoEra;
 
+import static de.mrcloud.main.Main.server;
+
 public class SendMessageCommand extends Command {
 
     public SendMessageCommand() {
@@ -42,7 +44,10 @@ public class SendMessageCommand extends Command {
             });
 
 
+        }  else {
+            JDAUtils.redBuilder("Error","Du hast keine Berechtigung diesen Command zu benutzen. Du benötigst die Rolle " + server.getRolesByName("Personalabteilung",true).get(0).getAsMention() + " !",member,e.getChannel(),20);
         }
+
         return false;
     }
 

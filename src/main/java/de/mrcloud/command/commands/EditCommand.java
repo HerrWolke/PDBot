@@ -24,8 +24,11 @@ public class EditCommand extends Command {
                 DataStorage.cops.editMedic(args[0], args[1] + " " + args[2]);
             else
                 DataStorage.cops.editMedic(e.getMessage().getMentionedMembers().get(0).getId(), args[1] + " " + args[2]);
-            JDAUtils.greenBuilder("Erfolg", "Der Cop " + server.getMemberById(Long.parseLong(args[0])).getAsMention() + " mit der Dienstnumemr " + args[1] + " " + args[2] + " wurde erfolgreich bearbeitet!", member, txtChannel);
+            JDAUtils.greenBuilder("Erfolg", "Der Cop " + server.getMemberById(Long.parseLong(args[0])).getAsMention() + " mit der Dienstnummer " + args[1] + " " + args[2] + " wurde erfolgreich bearbeitet!", member, txtChannel);
+        } else {
+            JDAUtils.redBuilder("Error","Du hast keine Berechtigung diesen Command zu benutzen. Du benötigst die Rolle " + server.getRolesByName("Personalabteilung",true).get(0).getAsMention() + " !",member,e.getChannel(),20);
         }
+
 
         return false;
     }

@@ -40,7 +40,10 @@ public class RemoveCommand extends Command {
             } else {
                 JDAUtils.redBuilder("Fehler", "Konnte diese Person nicht finden. Bitte benutze ihren Namen auf dem Discord oder erwähne ihn!", member, e.getChannel());
             }
+        }  else {
+            JDAUtils.redBuilder("Error","Du hast keine Berechtigung diesen Command zu benutzen. Du benötigst die Rolle " + server.getRolesByName("Personalabteilung",true).get(0).getAsMention() + " !",member,e.getChannel(),20);
         }
+
         e.getMessage().delete().queue();
         return false;
     }

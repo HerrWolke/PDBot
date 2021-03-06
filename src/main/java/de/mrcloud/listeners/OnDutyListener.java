@@ -41,7 +41,7 @@ public class OnDutyListener extends ListenerAdapter {
             boolean isCloudLife = false;
 
             for (Activity activity1 : e.getMember().getActivities()) {
-                if (activity1.getName().equalsIgnoreCase("cloudliferp.de"))
+                if ((activity1.asRichPresence() != null && activity1.asRichPresence().getDetails() != null && activity1.asRichPresence().getDetails().contains("cloudliferp.de")))
                     isCloudLife = true;
             }
 

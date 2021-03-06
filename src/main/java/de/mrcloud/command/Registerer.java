@@ -16,7 +16,8 @@ public class Registerer {
                 new RemoveCopCommand(),
                 new HelpCommand(),
                 new SetCopCommand(),
-                new ReloadBotCommand()
+                new ReloadBotCommand(),
+                new KickAndRename()
         );
     }
 }

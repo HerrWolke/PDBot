@@ -68,7 +68,14 @@ public class OnDuty {
     }
 
     public void removeOnDuty(Member member) {
+
+
+
+
         listOfOnDuty.remove(member.getIdLong());
+
+
+
         Message onDutyMessage = JDAUtils.getChannelMessage(server.getTextChannelById(DataStorage.settings.getSettings().get("dl_id")), DataStorage.settings.getSettings().get("dm_id"));
         StringBuilder newOnDutyList = new StringBuilder();
 
@@ -77,6 +84,8 @@ public class OnDuty {
         for (long id : listOfOnDuty) {
             dutyNumbersWithIds.put(Integer.valueOf(DataStorage.cops.getCops().get(Long.toString(id)).split(" ")[1]), id);
         }
+
+
 
 
         Integer[] dutyNumbers = dutyNumbersWithIds.keySet().toArray(Integer[]::new);

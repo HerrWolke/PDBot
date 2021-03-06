@@ -3,7 +3,7 @@ package de.mrcloud.utils;
 @SuppressWarnings("SpellCheckingInspection")
 public class Static {
     public static final String VERSION = "1.0";
-    public static final String TOKEN = "ODEyNzczNzI4NjYwMzU3MTUx.YDFohQ.qxqagI9XE_NZBAhx_v4BtlKzmO0";
+    public static final String TOKEN = "ODEyNzczNzI4NjYwMzU3MTUx.YDFohQ._OJxevL8OXnv32cCnLucZGM-lTg";
     public static final String TESTING_TOKEN = "NzM4NzM3OTE2NDQzODg1NTc5.XyQRTA.dtqJswz24jrQPYul35NNmGN7LIY";
     public static final String CLOUD_ID_STRING = "364475349700050944";
     public static long CLOUD_ID_LONG = 364475349700050944L;

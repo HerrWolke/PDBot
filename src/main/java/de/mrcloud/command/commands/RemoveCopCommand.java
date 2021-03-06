@@ -27,12 +27,12 @@ public class RemoveCopCommand extends Command {
             if (e.getMessage().getMentionedMembers().isEmpty()) {
 
                 if (args.length > 1) {
-                    returned = DataStorage.cops.removeMedic(args[0] + " " + args[1]);
+                    returned = DataStorage.cops.removeMedic(args[0] + " " + args[1],Boolean.parseBoolean(args[2]));
                 } else {
                     if (e.getMessage().getMentionedMembers().size() > 0)
-                        returned = DataStorage.cops.removeMedic(e.getMessage().getMentionedMembers().get(0).getId());
+                        returned = DataStorage.cops.removeMedic(e.getMessage().getMentionedMembers().get(0).getId(),Boolean.parseBoolean(args[2]));
                     else {
-                        returned = DataStorage.cops.removeMedic(args[0]);
+                        returned = DataStorage.cops.removeMedic(args[0],Boolean.parseBoolean(args[2]));
                     }
                 }
                 if (returned == null) {
@@ -44,11 +44,14 @@ public class RemoveCopCommand extends Command {
 
                 JDAUtils.greenBuilder("Erfolg", "Der Cop " + server.getMemberById(returned.getKey()).getAsMention() + " mit der Dienstnummer " + "OL " + dienstnummer + " wurde erfolgreich entfernt!", member, txtChannel);
             } else {
-                DataStorage.cops.removeMedic(e.getMessage().getMentionedMembers().get(0).getId());
+                DataStorage.cops.removeMedic(e.getMessage().getMentionedMembers().get(0).getId(),Boolean.parseBoolean(args[2]));
                 JDAUtils.greenBuilder("Erfolg", "Der Cop " + e.getMessage().getMentionedMembers().get(0).getAsMention() + " mit der Dienstnummer " + "OL " + dienstnummer + " wurde erfolgreich entfernt!", member, txtChannel);
             }
 
+        }  else {
+            JDAUtils.redBuilder("Error","Du hast keine Berechtigung diesen Command zu benutzen. Du benötigst die Rolle " + server.getRolesByName("Personalabteilung",true).get(0).getAsMention() + " !",member,e.getChannel(),20);
         }
+
 
         return false;
     }

@@ -36,7 +36,10 @@ public class SetCopCommand extends Command {
                 JDAUtils.greenBuilder("Erfolg", "Der Cop " + server.getMemberById(Long.parseLong(args[0].replaceAll("<", "").replaceAll("!", "").replaceAll(">", "").replaceAll("@", ""))).getAsMention() + " mit der Dienstnumemr " + args[1] + " " + args[2] + " wurde erfolgreich in die Dienstliste hinzugefügt!!", member, txtChannel);
             else
                 JDAUtils.redBuilder("Error", "Es ist ein Fehler aufgetreten. Bitte überprüfe deine Eingaben", e.getAuthor(), e.getChannel());
+        }  else {
+            JDAUtils.redBuilder("Error","Du hast keine Berechtigung diesen Command zu benutzen. Du benötigst die Rolle " + server.getRolesByName("Personalabteilung",true).get(0).getAsMention() + " !",member,e.getChannel(),20);
         }
+
 
         return false;
     }

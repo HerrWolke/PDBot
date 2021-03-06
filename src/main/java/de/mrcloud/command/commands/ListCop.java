@@ -47,7 +47,7 @@ public class ListCop extends Command {
             }
 
             for (String rem : toRemove) {
-                DataStorage.cops.removeMedic(rem);
+                DataStorage.cops.removeMedic(rem,false);
             }
 
 
@@ -58,7 +58,10 @@ public class ListCop extends Command {
             embBuilder.setDescription(builder);
             embBuilder.setFooter("Momentane Cops Anzahl: " + DataStorage.cops.getCops().size());
             txtChannel.sendMessage(embBuilder.build()).queue();
+        } else {
+            JDAUtils.redBuilder("Error","Du hast keine Berechtigung diesen Command zu benutzen. Du benötigst die Rolle " + server.getRolesByName("Personalabteilung",true).get(0).getAsMention() + " !",member,e.getChannel(),20);
         }
+
 
         return false;
     }

@@ -18,8 +18,8 @@ public class RoleUpdateListener extends ListenerAdapter {
         Member member = e.getMember();
         List<Role> roles = e.getRoles();
 
-        if (roles.get(0).getName().equalsIgnoreCase("Los Santos Police Department")) {
-            DataStorage.cops.removeMedic(member.getId());
+        if (roles.get(0).getName().equalsIgnoreCase("Los Santos Police Department") && !DataStorage.cops.getCops().containsKey(member.getId())) {
+            DataStorage.cops.removeMedic(member.getId(), false);
         }
     }
 }
